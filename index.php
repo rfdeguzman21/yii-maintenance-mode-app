@@ -1,4 +1,12 @@
 <?php
+if (file_exists('_mtce.json')) { // maintenance mode checker
+    $mtce = json_decode(file_get_contents('_mtce.json'));
+    if ($mtce->status === true) {
+        require('_mtce.php');
+        exit();
+    }
+}
+
 
 // change the following paths if necessary
 $yii = '/var/lib/yii/framework/yii.php';
